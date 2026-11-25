@@ -1,0 +1,21 @@
+name = "crystal-investments-edge-security"
+main = "src/index.mjs"
+compatibility_date = "2026-11-25"
+workers_dev = false
+
+[[durable_objects.bindings]]
+name = "AUTH_RATE_LIMITER"
+class_name = "AuthRateLimiter"
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["AuthRateLimiter"]
+
+[vars]
+# Replace with the project's Vercel deployment hostname, not the public Cloudflare domain.
+ORIGIN_URL = "https://your-crystal-project.vercel.app"
+
+# Replace with the actual Cloudflare-managed domain.
+[[routes]]
+pattern = "your-domain.example/*"
+zone_name = "your-domain.example"
